@@ -7,9 +7,11 @@ import (
 func main() {
 	var barcode zpl.Barcode
 
-	barcode.ZplConfig = "\"^xa^fo5,15^be1^bcn,40,,,,a^fd0001CJ^fs^xz\""
+	barcode.Dpmm = "8dpmm"
+	barcode.Width = "0.98"
+	barcode.Height = "0.39"
 	barcode.Prefix = "CJ"
-	barcode.Amount = 1
+	barcode.GenerateAmount = 50
 
 	barcode.Download()
 }
