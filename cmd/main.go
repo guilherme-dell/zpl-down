@@ -9,7 +9,7 @@ func main() {
 
 	barcode.ZplConfig = "\"^xa^fo5,15^be1^bcn,40,,,,a^fd0001CJ^fs^xz\""
 	barcode.Prefix = "CJ"
-	barcode.Amount = 50
+	barcode.Amount = 1
 
 	barcode.Download()
 }
