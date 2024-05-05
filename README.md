@@ -28,19 +28,17 @@ $ go run main.go
 ```
 <p style="color:red;">Antes de executar o programa, configure o código de barras que deseja gerar.</p>
 
-### Configurando o código de barras.
+### Configurando as informações do código de barra:
 
-```elixir
-==================================================================================
-|                       CONFIGURAÇÕES DO CÓDIGO DE BARRAS                        |
-==================================================================================
-| Dpmm           | A densidade de impressão desejada, em pontos por milímetro.   |
-| Width          | A largura da etiqueta, em polegadas.                          |
-| Height         | A altura da etiqueta, em polegadas.                           |
-| Prefix         | Prefixo que deseja usar no código de barras.                  |
-| GenerateAmount | Quantidade de códigos de barras que deseja gerar.             |
-==================================================================================
-```
+
+|                  | Descrição                                                               |
+|----------------  |-------------------------------------------------------------------------|
+|`Dpmm`            | Densidade de impressão desejada, em pontos por milímetro.               |
+|`Width`           | Largura da etiqueta, em polegadas.                                      |
+|`Height`          | Altura da etiqueta, em polegadas.                                       |
+|`Prefix`          | Prefixo que deseja usar no código de barras.                            |
+|`GenerateAmount`  | Quantidade de códigos de barras que deseja gerar.                       |
+
 ### Exemplo:
 
 ```go
