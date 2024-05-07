@@ -1,8 +1,14 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/guilherme-dell/zpl-down/zpl"
 )
+
+func init(){
+	fmt.Println("Teste")
+}
 
 func main() {
 	var barcode zpl.Barcode
@@ -11,7 +17,7 @@ func main() {
 	barcode.Width = "0.98"
 	barcode.Height = "0.39"
 	barcode.Prefix = "CJ"
-	barcode.GenerateAmount = 50
+	barcode.GenerateAmount = 1
 
 	barcode.Download()
 }
