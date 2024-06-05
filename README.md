@@ -1,5 +1,5 @@
 <center>
-<img src="https://cdn.discordapp.com/attachments/976803430624526346/1230046001193156658/ZPLdown.gif?ex=6631e49b&is=661f6f9b&hm=831834b08e81486cba646958dc72616e630302534778f774b9203a704401c3f0&">
+<img src="https://imgur.com/tkdEL4z.png">
 </center>
 
 ### Apresentação
