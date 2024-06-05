@@ -8,17 +8,16 @@ import (
 )
 
 type BarcodeConfig struct {
-	Dpmm      string `json:"Dpmm"`
-	Width     string `json:"Width"`
-	Height    string `json:"Height"`
+	Dpmm      string `json:"Dpmm" validate:"required"`
+	Width     string `json:"Width" validate:"required"`
+	Height    string `json:"Height" validate:"required"`
 	ZplConfig string `json:"ZplConfig"`
 	Prefix    string `json:"Prefix"`
-	Index	  int32  `json:"Index"` 
-	Amount    int32  `json:"Amount"`
+	Index     int32  `json:"Index" validate:"required"`
+	Amount    int32  `json:"Amount" validate:"required"`
 }
 
 type Config struct {
-	APIBaseURL    string        `json:"APIBaseURL"`
 	BarcodeDir    string        `json:"BarcodeDir"`
 	BarcodeConfig BarcodeConfig `json:"BarcodeConfig"`
 }

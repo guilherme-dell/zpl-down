@@ -1,23 +1,15 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/guilherme-dell/zpl-down/internal/config"
+	"github.com/guilherme-dell/zpl-down/internal/downloader"
+	"github.com/guilherme-dell/zpl-down/pkg/utils"
 )
 
 func main() {
-	//var barcode zpl.Barcode
 
-	//barcode.Dpmm = "8dpmm"
-	//barcode.Width = "0.98"
-	//barcode.Height = "0.39"
-	//barcode.Prefix = "CJ"
-	//barcode.GenerateAmount = 1
+	cfg := config.LoadConfig("./layouts/layout_1.json")
 
-	//barcode.Download()
-
-	cfg := config.LoadConfig("config_1.json")
-	
-	fmt.Println(cfg)
+	utils.CreateDir(cfg)
+	downloader.DownloadBarCodes(cfg.BarcodeConfig, cfg)
 }

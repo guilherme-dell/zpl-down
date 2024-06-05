@@ -1,13 +1,12 @@
 {
-    "APIBaseURL": "http://api.labelary.com/v1/printers/",
     "BarcodeDir": "./barcodes",
     "BarcodeConfig": {
         "Dpmm": "8dpmm",
         "Width": "0.98",
         "Height": "0.39",
-        "ZplConfig": "nada_por_enquanto",
+        "ZplConfig": "null",
         "Prefix": "CJ",
-        "Index": 0,
-        "Amount": 1
+        "Index": 1,
+        "Amount": 10
     }
 }
