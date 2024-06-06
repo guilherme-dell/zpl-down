@@ -6,10 +6,12 @@ import (
 	"os"
 
 	"github.com/guilherme-dell/zpl-down/internal/config"
+	"github.com/guilherme-dell/zpl-down/internal/downloader"
 )
 
 var GREEN = "\033[0;32m"
 var RED = "\033[0;31m"
+var YELLOW = "\033[0;33m"
 var RESET = "\033[0m"
 
 func CreateDir(configFile config.Config) {
@@ -25,14 +27,28 @@ func CreateDir(configFile config.Config) {
 }
 
 func PrinterFILE(cfg config.Config) {
-	fmt.Printf("%s[CONFIG]%s\n", GREEN,RESET)
-	fmt.Printf(" %sDIR:%s➜%s\n",RED, RESET, cfg.BarcodeDir)
-	fmt.Printf("%s[BARCODE-CONFIG]%s\n", GREEN,RESET)
-	fmt.Printf(" %sDPMM%s➜%s\n",RED, RESET, cfg.BarcodeConfig.Dpmm)
-	fmt.Printf(" %sWIDTH%s➜%s\n",RED, RESET, cfg.BarcodeConfig.Width)
-	fmt.Printf(" %sHEIGHT%s➜%s\n",RED, RESET, cfg.BarcodeConfig.Height)
-	fmt.Printf(" %sZPL_CONFIG%s➜%s\n",RED, RESET, cfg.BarcodeConfig.ZplConfig)
-	fmt.Printf(" %sPREFIX%s➜%s\n",RED, RESET, cfg.BarcodeConfig.Prefix)
-	fmt.Printf(" %sINDEX%s➜%d\n",RED, RESET, cfg.BarcodeConfig.Index)
-	fmt.Printf(" %sAMOUNT%s➜%d\n",RED, RESET, cfg.BarcodeConfig.Amount)
+	fmt.Printf("%s[CONFIG]%s\n", GREEN, RESET)
+	fmt.Printf(" %s-DIR:%s➜%s\n", RED, RESET, cfg.BarcodeDir)
+	fmt.Printf("%s[BARCODE-CONFIG]%s\n", GREEN, RESET)
+	fmt.Printf(" %s-DPMM%s➜%s\n", RED, RESET, cfg.BarcodeConfig.Dpmm)
+	fmt.Printf(" %s-WIDTH%s➜%s\n", RED, RESET, cfg.BarcodeConfig.Width)
+	fmt.Printf(" %s-HEIGHT%s➜%s\n", RED, RESET, cfg.BarcodeConfig.Height)
+	fmt.Printf(" %s-ZPL_CONFIG%s➜%s\n", RED, RESET, cfg.BarcodeConfig.ZplConfig)
+	fmt.Printf(" %s-PREFIX%s➜%s\n", RED, RESET, cfg.BarcodeConfig.Prefix)
+	fmt.Printf(" %s-INDEX%s➜%d\n", RED, RESET, cfg.BarcodeConfig.Index)
+	fmt.Printf(" %s-AMOUNT%s➜%d\n", RED, RESET, cfg.BarcodeConfig.Amount)
+	fmt.Printf(" %s-PADWIDTH%s➜%d\n", RED, RESET, cfg.BarcodeConfig.PadWidth)
+}
+
+func PrinterURL(cfg config.Config) {
+
+	URL := downloader.UrlMount(cfg.BarcodeConfig, 1)
+	fmt.Printf("%s[URL VARs]%s\n", GREEN, RESET)
+	fmt.Printf(" %s-PATH_URL%s➜%s%s%s\n", RED, RESET, YELLOW, URL, RESET)
+	fmt.Printf(" %s-ZPL_CONFIG%s➜%s%s%s\n", RED, RESET, YELLOW, cfg.BarcodeConfig.ZplConfig, RESET)
+}
+
+func PrintSucces(index uint, cfg config.Config) {
+	format := fmt.Sprintf("BARCODE_%%0%dd%%s\t\t\033[0;32m[OK]\033[0m\n", cfg.BarcodeConfig.PadWidth)
+	fmt.Printf(format, index, cfg.BarcodeConfig.Prefix)
 }

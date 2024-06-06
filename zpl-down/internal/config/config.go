@@ -11,10 +11,11 @@ type BarcodeConfig struct {
 	Dpmm      string `json:"Dpmm" validate:"required"`
 	Width     string `json:"Width" validate:"required"`
 	Height    string `json:"Height" validate:"required"`
-	ZplConfig string `json:"ZplConfig"`
+	ZplConfig string `json:"ZplConfig" validate:"required"`
 	Prefix    string `json:"Prefix"`
-	Index     int32  `json:"Index" validate:"required"`
-	Amount    int32  `json:"Amount" validate:"required"`
+	Index     uint  `json:"Index" validate:"required"`
+	Amount    uint  `json:"Amount" validate:"required"`
+	PadWidth  int  `json:"PadWidth" validate:"required"`
 }
 
 type Config struct {

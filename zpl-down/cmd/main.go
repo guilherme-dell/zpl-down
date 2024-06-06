@@ -11,5 +11,9 @@ func main() {
 	cfg := config.LoadConfig("./layouts/layout_1.json")
 
 	utils.CreateDir(cfg)
+
+	utils.PrinterFILE(cfg)
+	utils.PrinterURL(cfg)
+
 	downloader.DownloadBarCodes(cfg.BarcodeConfig, cfg)
 }

@@ -11,9 +11,10 @@ import (
 	"github.com/guilherme-dell/zpl-down/internal/config"
 )
 
-func urlMount(barcodeConfig config.BarcodeConfig, indice int32) string {
-	return fmt.Sprintf("http://api.labelary.com/v1/printers/%s/labels/%sx%s/0/ --data-urlencode \"^xa^fo4,15^be1^bcn,40,,,,a^fd%04d%s^fs^xz\"",
-		barcodeConfig.Dpmm, barcodeConfig.Width, barcodeConfig.Height, indice, barcodeConfig.Prefix)
+func UrlMount(barcodeConfig config.BarcodeConfig, indice uint) string {
+	format := fmt.Sprintf("http://api.labelary.com/v1/printers/%%s/labels/%%sx%%s/0/ --data-urlencode \"%%s%%0%dd%%s^fs^xz\"", barcodeConfig.PadWidth)
+
+	return fmt.Sprintf(format, barcodeConfig.Dpmm, barcodeConfig.Width, barcodeConfig.Height, barcodeConfig.ZplConfig, indice, barcodeConfig.Prefix)
 }
 
 func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
@@ -22,7 +23,7 @@ func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
 
 	for index <= barcodeConfig.Amount {
 
-		URL := urlMount(barcodeConfig, index)
+		URL := UrlMount(barcodeConfig, index)
 
 		response, err := http.Get(URL)
 		if err != nil {
@@ -47,7 +48,7 @@ func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
 			log.Fatalf("Fail to save file:%v", err)
 		}
 
-		fmt.Printf("BARCODE_%04d%s\t\t\033[0;32m[OK]\033[0m\n", index, barcodeConfig.Prefix)
+		//PrintSucces(index, cfg)
 		index++
 		time.Sleep(200 * time.Millisecond)
 	}

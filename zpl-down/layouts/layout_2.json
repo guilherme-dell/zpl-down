@@ -1,13 +1,12 @@
 {
-    "BarcodeDir": "./barcodes",
+    "BarcodeDir": "./barcodes/layout_1",
     "BarcodeConfig": {
         "Dpmm": "8dpmm",
         "Width": "0.98",
         "Height": "0.39",
-        "ZplConfig": "^xa^fo4,15^be1^bcn,40,,,,a^fd",
+        "ZplConfig": "null",
         "Prefix": "CJ",
         "Index": 1,
-        "Amount": 2,
-        "PadWidth": 3
+        "Amount": 2
     }
 }
