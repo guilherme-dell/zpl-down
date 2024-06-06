@@ -12,8 +12,5 @@ func main() {
 
 	utils.CreateDir(cfg)
 
-	utils.PrinterFILE(cfg)
-	utils.PrinterURL(cfg)
-
 	downloader.DownloadBarCodes(cfg.BarcodeConfig, cfg)
 }

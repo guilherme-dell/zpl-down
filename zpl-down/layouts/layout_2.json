@@ -4,9 +4,10 @@
         "Dpmm": "8dpmm",
         "Width": "0.98",
         "Height": "0.39",
-        "ZplConfig": "null",
-        "Prefix": "CJ",
+        "ZplConfig": "^xa^fo10,10^bcn,55,n,,,n^fd",
+        "Prefix": "X",
         "Index": 1,
-        "Amount": 2
+        "Amount": 2,
+        "PadWidth": 0
     }
 }

@@ -9,10 +9,7 @@ import (
 	"time"
 
 	"github.com/guilherme-dell/zpl-down/internal/config"
-	
 )
-
-
 
 func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
 	index := barcodeConfig.Index
@@ -31,9 +28,10 @@ func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
 			log.Fatalf("Request failed - status code::%v", response.StatusCode)
 		}
 
-		fileName := fmt.Sprintf("%s/%04d%s.png", dir, index, barcodeConfig.Prefix)
+		fileName := createFileName(index, cfg)
+		filePath := fmt.Sprintf("%s/%s.png", dir, fileName)
 
-		file, err := os.Create(fileName)
+		file, err := os.Create(filePath)
 		if err != nil {
 			log.Fatalf("Fail to create file:%v", err)
 		}
@@ -45,8 +43,8 @@ func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
 			log.Fatalf("Fail to save file:%v", err)
 		}
 
-		printPretty(index, barcodeConfig.PadWidth, barcodeConfig.Prefix)
-		
+		fmt.Printf("BARCODE_%s\t\t\033[0;32m[OK]\033[0m\n", fileName)
+
 		index++
 		time.Sleep(200 * time.Millisecond)
 	}
@@ -54,11 +52,10 @@ func DownloadBarCodes(barcodeConfig config.BarcodeConfig, cfg config.Config) {
 
 func UrlMount(barcodeConfig config.BarcodeConfig, indice uint) string {
 	format := fmt.Sprintf("http://api.labelary.com/v1/printers/%%s/labels/%%sx%%s/0/ --data-urlencode \"%%s%%0%dd%%s^fs^xz\"", barcodeConfig.PadWidth)
-
 	return fmt.Sprintf(format, barcodeConfig.Dpmm, barcodeConfig.Width, barcodeConfig.Height, barcodeConfig.ZplConfig, indice, barcodeConfig.Prefix)
 }
 
-func printPretty (index uint, padWidth int, prefix string) {
-	format := fmt.Sprintf("BARCODE_%%0%dd%%s\t\t\033[0;32m[OK]\033[0m\n", padWidth)
-	fmt.Printf(format, index, prefix)
+func createFileName(index uint, cfg config.Config) string {
+	format := fmt.Sprintf("%%0%dd%%s", cfg.BarcodeConfig.PadWidth)
+	return fmt.Sprintf(format, index, cfg.BarcodeConfig.Prefix)
 }
