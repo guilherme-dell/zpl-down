@@ -12,13 +12,15 @@ No dia 15/04/2024, fiz a instalação de uma impressora térmica no comércio do
 
 ### Recursos do ZPL-DOWN
 
-- [x] [0.2] `PARAMETROS ACEITOS`
+- [x] [0.3.1] `PARAMETROS ACEITOS`
   - [x] DPMM
   - [x] WIDTH
   - [x] HEIGHT
   - [x] PREFIX
-  - [ ] INDEX
-  - [ ] ZPLCONFIG
+  - [x] ZPLCONFIG
+  - [x] INDEX
+  - [x] AMOUNT
+  - [x] PADWIDTH
 
 ### 🖥️ Pré-requisitos
 - Certifique-se de ter o GO instalado em seu computador.
