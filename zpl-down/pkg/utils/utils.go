@@ -47,8 +47,3 @@ func PrinterURL(cfg config.Config) {
 	fmt.Printf(" %s-PATH_URL%s➜%s%s%s\n", RED, RESET, YELLOW, URL, RESET)
 	fmt.Printf(" %s-ZPL_CONFIG%s➜%s%s%s\n", RED, RESET, YELLOW, cfg.BarcodeConfig.ZplConfig, RESET)
 }
-
-func PrintSucces(index uint, cfg config.Config) {
-	format := fmt.Sprintf("BARCODE_%%0%dd%%s\t\t\033[0;32m[OK]\033[0m\n", cfg.BarcodeConfig.PadWidth)
-	fmt.Printf(format, index, cfg.BarcodeConfig.Prefix)
-}
