@@ -17,7 +17,7 @@ No dia 15/04/2024, fiz a instalação de uma impressora térmica no comércio do
   - [x] WIDTH
   - [x] HEIGHT
   - [x] PREFIX
-  - [x] ZPLCONFIG
+  - [x] ZPL-CONFIG
   - [x] INDEX
   - [x] AMOUNT
   - [x] PADWIDTH
@@ -44,20 +44,29 @@ $ go run main.go
 |`Width`           | Largura da etiqueta, em polegadas.                                      |
 |`Height`          | Altura da etiqueta, em polegadas.                                       |
 |`Prefix`          | Prefixo que deseja usar no código de barras.                            |
-|`GenerateAmount`  | Quantidade de códigos de barras que deseja gerar.                       |
+|`Zpl-Config`      | Configuração do código ZPL referente o código de barras.                |
+|`Index`           | Número do index inicial utilizado para gerar o código de barras.        |
+|`Amount`          | Quantidade de códigos de barras que deseja gerar.                       |
+|`PadWidth`        | Quantidade de digitos zeros à esquerda.                                 |
+
 
 ### Exemplo:
 
-```go
-var barcode zpl.Barcode
+```json 
+{
+    "BarcodeDir": "./barcodes",
+    "BarcodeConfig": {
+        "Dpmm": "8dpmm",
+        "Width": "0.98",
+        "Height": "0.39",
+        "ZplConfig": "^xa^fo4,15^be1^bcn,40,,,,a^fd",
+        "Prefix": "CJ",
+        "Index": 1,
+        "Amount": 2,
+        "PadWidth": 4
+    }
+}
 
-barcode.Dpmm = "8dpmm"
-barcode.Width = "1"
-barcode.Height = "2"
-barcode.Prefix = "XPTO"
-barcode.GenerateAmount = 12
-
-barcode.Download()
 ```
 Certifique-se de inserir todas as informações exigidas. Após isso, realize a execução do programa.
 
