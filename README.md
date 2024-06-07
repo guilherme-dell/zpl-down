@@ -4,11 +4,9 @@
 
 ### Apresentação
 
-![Obsoleto](https://img.shields.io/badge/AVISO-Documentação%20obsoleta-red)
+![DOCUMENTAÇÃO](https://img.shields.io/badge/AVISO-A%20Documentação%20está%20sendo%20atualizada-red)
 
-A documentação atual está obsoleta, irei fazer sua atualização no dia 06/06/24.
-
-No dia 15/04/2024, fiz a instalação de uma impressora térmica no comércio do meu pai. Percebi que o processo de gerar um código de barra era lento,cansativo e tedioso. Ao pesquisar, descobri o ZPL Viewer e sua API. Decidi então criar um pequeno programa no qual você configura as informações referente o modelo do código de barras que deseja criar, e ele faz o download automaticamente para você. Meu pai ficou muito feliz, pois agora, com apenas um comando, ele gera os seus tão amados códigos de barra.
+No dia 15/04/2024, fiz a instalação de uma impressora térmica no comércio do meu pai. Percebi que o processo de gerar um código de barra era lento, cansativo e tedioso. Ao pesquisar, descobri o ZPL Viewer e sua API. Decidi então criar um pequeno programa no qual você configura as informações referentes ao modelo do código de barras que deseja criar, e ele faz o download automaticamente para você. Meu pai ficou muito feliz, pois agora, com apenas um comando, ele gera os seus tão amados códigos de barra.
 
 ### Recursos do ZPL-DOWN
 
@@ -26,14 +24,14 @@ No dia 15/04/2024, fiz a instalação de uma impressora térmica no comércio do
 - Certifique-se de ter o GO instalado em seu computador.
 - Certifique-se de possuir o Git instalado em seu sistema para clonar este repositório.
 
-### 🖥️ Instalação e Execução
+### 🖥️ Download e Execução
 
 ```bash
 $ git clone https://github.com/guilherme-dell/zpl-down.git
 $ cd zpl-down/cmd
 $ go run main.go
 ```
-<p style="color:red;">Antes de executar o programa, configure o código de barras que deseja gerar.</p>
+<p style="color:red;">Antes de executar o programa, configure o modelo do código de barras que deseja gerar.</p>
 
 ### Configurando as informações do código de barra:
 
@@ -44,10 +42,10 @@ $ go run main.go
 |`Width`           | Largura da etiqueta, em polegadas.                                      |
 |`Height`          | Altura da etiqueta, em polegadas.                                       |
 |`Prefix`          | Prefixo que deseja usar no código de barras.                            |
-|`Zpl-Config`      | Configuração do código ZPL referente o código de barras.                |
-|`Index`           | Número do index inicial utilizado para gerar o código de barras.        |
+|`Zpl-Config`      | Configuração do código ZPL que vai ser renderizado. O código não pode ser completo, precisa conter apenas as informações que vão até o campo "^fd", após esse campo o ZPL-DOWN faz a configuração automática.                             |
+|`Index`           | Número do índex inicial utilizado para gerar o código de barras.        |
 |`Amount`          | Quantidade de códigos de barras que deseja gerar.                       |
-|`PadWidth`        | Quantidade de digitos zeros à esquerda.                                 |
+|`PadWidth`        | Quantidade de dígitos zeros à esquerda.                                 |
 
 
 ### Exemplo:
@@ -69,6 +67,10 @@ $ go run main.go
 
 ```
 Certifique-se de inserir todas as informações exigidas. Após isso, realize a execução do programa.
+
+## Features futuras
+
+- [ ] `VALIDAÇÃO DOS CAMPOS`
 
 ### Qualquer dúvida referente ao uso do programa é só me chamar no Discord 👾
 ### "Se encontrar algum erro ou quiser me dar dicas de programação, me chame no Discord!"
